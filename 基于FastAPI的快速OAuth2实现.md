@@ -6,8 +6,7 @@
 本人最近在学习使用FastAPI搭建一些应用的后端框架，
 FastAPI简单易用，性能强悍，因此使用体验还是较为良好的。
 
-其中，官网的`Advanced Security`里讲到了基于`jwt`的`OAuth2`认证
-（[FastAPI-OAuth2](https://fastapi.tiangolo.com/advanced/security/oauth2-scopes/)），
+其中，官网的`Advanced Security`里讲到了基于`jwt`的`OAuth2`认证，
 由于自身对鉴权系统的不够了解，再加上官网此处的写法十分高级与抽象，
 因此耗费了大量的时间。
 
@@ -94,11 +93,11 @@ pip install -r requirements.txt --ignore-installed
 ```bash
 uvicorn main:app --reload --host=localhost --port=8000 
 ```
-![命令行运行启动截图](assets/run-app-from-cmd.png)
+![命令行运行启动截图](http://img-public.nanchuan.site/8d0cc174d9ea1a0d79cf699b8ee6134c)
 
 ### 运行方法二
 直接运行`main.py`
-![直接运行启动截图](assets/run-app-directly.png)
+![直接运行启动截图](http://img-public.nanchuan.site/f7dba3c6e35d87d7ea68a685511f8437)
 
 ### 访问OpenAPI
 运行成功后，点击对应网址（默认：`http://127.0.0.1:8000）`，
@@ -121,11 +120,11 @@ uvicorn main:app --reload --host=localhost --port=8000
 #### 1. 游客注册
 点击`用户注册`，点击`Try it out`，修改输入框中的一些信息，
 然后点击`Executive`。
-![register](assets/openapi-register.png)
+![register](http://img-public.nanchuan.site/7f9a60abc5e5d72791ccf1b50b014f73)
 
 #### 2. 使用用户名与密码进行登录
 点击`用户登录`，其他同上，然后复制获得的`token`。
-![login](assets/openapi-login.png)
+![login](http://img-public.nanchuan.site/a6f4df6abc713ffd9c3020ad8f4fb735)
 
 #### 3. 测试使用token进行用户访问
 点击`用户查看`，将`token`复制到`authorization-`中，其他同上。
@@ -133,7 +132,7 @@ uvicorn main:app --reload --host=localhost --port=8000
 （注意，标准的请求头字段应该是`Authorization`，
 这里主要是因为Swagger的一些系统原因，不得不改成一个别名，
 详情参考：https/github.cotiangolfastapissue612）
-![read](assets/openapi-read.png)
+![read](http://img-public.nanchuan.site/f7a4ae14ab0850c9413a49f962bf019c)
 
 #### 4. 测试使用token进行用户修改
 点击`用户修改`，其他同上。
@@ -142,14 +141,14 @@ uvicorn main:app --reload --host=localhost --port=8000
 
 如果想让这个接口可以使用，重新注册一个账户，
 并且在注册信息`scopes`字段中加入`user:write`。
-![write](assets/openapi-write.png)
+![write](http://img-public.nanchuan.site/94eed1130f62fa9a5b5e92d101242ec7)
 
 #### 5. 测试使用token进行用户注销
 点击`用户注销`，其他同上。返回结果如下，原因已经解释了。
 
 综上，基于jwt、OAuth2、前端和后端，
 可以实现非常复杂的鉴权系统，满足不同种业务的需求。
-![delete](assets/openapi-delete.png)
+![delete](http://img-public.nanchuan.site/dbce9e32ec1e1e8e196e02e04ebb04d0)
 
 ### OpenAPI简介
 OpenAPI基于流行的SwaggerUI，用于快速生成项目的API前端展示系统，
