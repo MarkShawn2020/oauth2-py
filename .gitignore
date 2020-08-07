@@ -137,3 +137,5 @@ api/__pycache__/
 api/user/__pycache__/
 database/__pycache__/
 utils/__pycache__/
+
+.idea/
