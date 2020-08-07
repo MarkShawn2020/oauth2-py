@@ -115,8 +115,8 @@ uvicorn main:app --reload --host=localhost --port=8000
 
 ### OpenAPI使用说明
 > 图片链接在OpenAPI页面均是失效的，但可以去Github或Gitee浏览。
-> - Github链接： https://github.com/MarkShawn2020/oauth2-py
-> - Gitee链接：https://gitee.com/MarkShawn2020/oauth2-py
+> - [Github链接](https://github.com/MarkShawn2020/oauth2-py)
+> - [Gitee链接](ttps://gitee.com/MarkShawn2020/oauth2-py)
 
 #### 1. 游客注册
 点击`用户注册`，点击`Try it out`，修改输入框中的一些信息，
