@@ -3,15 +3,11 @@
 ## 项目介绍
 
 ### 背景
-本人最近在学习使用FastAPI搭建一些应用的后端框架，
-FastAPI简单易用，性能强悍，因此使用体验还是较为良好的。
+本人最近在学习使用FastAPI搭建一些应用的后端框架，FastAPI简单易用，性能强悍，因此使用体验还是较为良好的。
 
-其中，官网的`Advanced Security`里讲到了基于`jwt`的`OAuth2`认证，
-由于自身对鉴权系统的不够了解，再加上官网此处的写法十分高级与抽象，
-因此耗费了大量的时间。
+其中，官网的`Advanced Security`里讲到了基于`jwt`的`OAuth2`认证（[FastAPI-OAuth2](https://fastapi.tiangolo.com/advanced/security/oauth2-scopes/)），由于自身对鉴权系统的不够了解，再加上官网此处的写法十分高级与抽象，因此耗费了大量的时间。
 
-现在，基于我的研究，对作者的代码重新整理，降低其耦合度，
-封装成了标准的可开箱即用的项目结构，供大家学习使用。
+现在，基于我的研究，对作者的代码重新整理，降低其耦合度，封装成了标准的可开箱即用的项目结构，供大家学习使用。
 
 ### 贡献
 官网的教程，其实已经很详细了，相较于官网的示例，本项目有以下改进：
@@ -22,38 +18,33 @@ FastAPI简单易用，性能强悍，因此使用体验还是较为良好的。
 - 参考作者的template，使用了model、crud、router的app结构
 
 ### 计划
-企业的鉴权系统十分重要，但现在有很多开箱即用的成熟框架，
-比如Spring体系中就也默认使用jwt的OAuth2系统，
-在绝大多数情况下，已经能够满足企业级的使用需求，
-无需投入更多精力，尤其是微服务应用中。
+企业的鉴权系统十分重要，但现在有很多开箱即用的成熟框架，比如Spring体系中就也默认使用jwt的OAuth2系统，在绝大多数情况下，已经能够满足企业级的使用需求，无需投入更多精力，尤其是微服务应用中。
 
-基于以上认知，该程序后续会进一步完善，
-但没有太大意义去把它做成一个python专用的、更方便的认证系统。
+基于以上认知，该程序后续会进一步完善，但没有太大意义去把它做成一个python专用的、更方便的认证系统。
 
-本项目更适合希望使用python实现企业级认证系统的程序员研究使用，
-更精确地说，是想使用FastAPI的。
+本项目更适合希望使用python实现企业级认证系统的程序员研究使用，更精确地说，是想使用FastAPI的。
 
 ### TODO
-- ![ ] 新建user_v2的app，加入FastAPI内置的Bear认证，
-以进一步提高OpenAPI的调试体验
-- ![ ] 导入之前写好的mongo优化模块（解决_id问题）
-- ![ ] 加入修改密码的测试
+- [ ] 新建user_v2的app，加入FastAPI内置的Bear认证，以进一步提高OpenAPI的调试体验
+- [ ] 导入之前写好的mongo优化模块（解决_id问题）
+- [ ] 加入修改密码的测试
 
 ## 项目结构
+
 ```text
 .
 ├── api
-│   ├── __init__.py
-│   ├── root_router.py  # 定义全局路由
-│   └── user            # 可以理解为一个App
-│       ├── __init__.py
-│       ├── crud.py         # 后端数据库增删改查逻辑
-│       ├── model.py        # 定义模型
-│       └── router.py       # 链接模型、数据库的路由
+│   ├── __init__.py
+│   ├── root_router.py  # 定义全局路由
+│   └── user            # 可以理解为一个App
+│       ├── __init__.py
+│       ├── crud.py         # 后端数据库增删改查逻辑
+│       ├── model.py        # 定义模型
+│       └── router.py       # 链接模型、数据库的路由
 ├── database            # 数据库，默认使用mongodb
-│   ├── __init__.py
-│   ├── client.py           # 定义了数据库连接的后端
-│   └── response.py         # 统一了数据库CRUD的返回结构
+│   ├── __init__.py
+│   ├── client.py           # 定义了数据库连接的后端
+│   └── response.py         # 统一了数据库CRUD的返回结构
 ├── main.py             # 主程序，默认使用uvicorn启动
 ├── readme.md
 ├── settings.py         # 一些配置项
@@ -65,11 +56,13 @@ FastAPI简单易用，性能强悍，因此使用体验还是较为良好的。
 
 ## 使用说明
 ### 推荐安装方式（使用虚拟环境）
+
 ```bash
 pip install virtualenvwrapper
 ```
 
 进入工作目录
+
 ```bash
 git clone ...
 cd oauth2-py
@@ -78,30 +71,36 @@ pip install -r requirements.txt --ignore-installed
 ```
 
 ### 配置
+
 ### 修改你的用户信息
-进入`settings.py`，修改`DefaultUser`下的信息字段，
-尤其是`username`字段，该字段必须唯一，
-否则注册时会显示注册失败，影响你的后续体验
+
+进入`settings.py`，修改`DefaultUser`下的信息字段，尤其是`username`字段，该字段必须唯一，否则注册时会显示注册失败，影响你的后续体验
+
 ### 修改你的秘钥
-使用`openssl rand -hex 32`命令，生成你自己的`JWT_SK`秘钥，
-该秘钥是`jwt`机制最重要的的保障，必须在服务端妥善存储，防止泄露。
+
+使用`openssl rand -hex 32`命令，生成你自己的`JWT_SK`秘钥，该秘钥是`jwt`机制最重要的的保障，必须在服务端妥善存储，防止泄露。
 
 生产环境中，要将秘钥写入环境变量中，而非源码里。
 
 ### 运行方法一（推荐）
 在当前目录下，
+
 ```bash
 uvicorn main:app --reload --host=localhost --port=8000 
 ```
-![命令行运行启动截图](http://img-public.nanchuan.site/8d0cc174d9ea1a0d79cf699b8ee6134c)
+
+如下：
+
+![命令行运行启动截图](http://img-public.nanchuan.site/ba4a893e00411047353ab217df5a86d5)
 
 ### 运行方法二
+
 直接运行`main.py`
-![直接运行启动截图](http://img-public.nanchuan.site/f7dba3c6e35d87d7ea68a685511f8437)
+
+![直接运行启动截图](http://img-public.nanchuan.site/5ebfe4dee395a47588288552712fcbd3)
 
 ### 访问OpenAPI
-运行成功后，点击对应网址（默认：`http://127.0.0.1:8000）`，
-在其后缀加上`/docs`，可访问到OpenAPI页面
+运行成功后，点击对应网址（默认：`http://127.0.0.1:8000`，在其后缀加上`/docs`，可访问到OpenAPI页面
 
 ## OpenAPI调试
 ### 本API结构
@@ -113,43 +112,51 @@ uvicorn main:app --reload --host=localhost --port=8000
 - 用户删除自己的信息（基于token，默认权限`user:delete`（后台已做限制））
 
 ### OpenAPI使用说明
+
 > 图片链接在OpenAPI页面均是失效的，但可以去Github或Gitee浏览。
 > - [Github链接](https://github.com/MarkShawn2020/oauth2-py)
 > - [Gitee链接](ttps://gitee.com/MarkShawn2020/oauth2-py)
 
 #### 1. 游客注册
-点击`用户注册`，点击`Try it out`，修改输入框中的一些信息，
-然后点击`Executive`。
-![register](http://img-public.nanchuan.site/7f9a60abc5e5d72791ccf1b50b014f73)
+点击`用户注册`，点击`Try it out`，修改输入框中的一些信息，然后点击`Executive`。
+
+![register](http://img-public.nanchuan.site/fe8224b1a25cb5cdfbd837ab329df3a5)
 
 #### 2. 使用用户名与密码进行登录
 点击`用户登录`，其他同上，然后复制获得的`token`。
-![login](http://img-public.nanchuan.site/a6f4df6abc713ffd9c3020ad8f4fb735)
+
+![login](http://img-public.nanchuan.site/85f63b5782650c1a0e450a922b8f7e51)
 
 #### 3. 测试使用token进行用户访问
 点击`用户查看`，将`token`复制到`authorization-`中，其他同上。
 
-（注意，标准的请求头字段应该是`Authorization`，
-这里主要是因为Swagger的一些系统原因，不得不改成一个别名，
-详情参考：https/github.cotiangolfastapissue612）
-![read](http://img-public.nanchuan.site/f7a4ae14ab0850c9413a49f962bf019c)
+（注意，标准的请求头字段应该是`Authorization`，这里主要是因为Swagger的一些系统原因，不得不改成一个别名，详情参考：[fastapi-security-oauth2](https/github.cotiangolfastapissue612)）
+
+![read](http://img-public.nanchuan.site/a16d55c77d758d32154c6e749eaeeaf5)
 
 #### 4. 测试使用token进行用户修改
-点击`用户修改`，其他同上。
-由于我在系统中对用户修改的api加入了`user:write`字段检验，
-而注册时默认没有加入该字段，因此会返回权限不够的结果。
 
-如果想让这个接口可以使用，重新注册一个账户，
-并且在注册信息`scopes`字段中加入`user:write`。
-![write](http://img-public.nanchuan.site/94eed1130f62fa9a5b5e92d101242ec7)
+点击`用户修改`，其他同上。
+由于我在系统中对用户修改的api加入了`user:write`字段检验，而注册时默认没有加入该字段，因此会返回权限不够的结果。
+
+如果想让这个接口可以使用，重新注册一个账户，并且在注册信息`scopes`字段中加入`user:write`。
+
+![write](http://img-public.nanchuan.site/30f7012512930a3b7d2fe4c83d52be39)
 
 #### 5. 测试使用token进行用户注销
 点击`用户注销`，其他同上。返回结果如下，原因已经解释了。
 
-综上，基于jwt、OAuth2、前端和后端，
-可以实现非常复杂的鉴权系统，满足不同种业务的需求。
-![delete](http://img-public.nanchuan.site/dbce9e32ec1e1e8e196e02e04ebb04d0)
+综上，基于jwt、OAuth2、前端和后端，可以实现非常复杂的鉴权系统，满足不同种业务的需求。
+
+![delete](http://img-public.nanchuan.site/d6318736dd3072a834afcd174080684c)
 
 ### OpenAPI简介
-OpenAPI基于流行的SwaggerUI，用于快速生成项目的API前端展示系统，
-方便程序开发人员与部分体验成员使用。
+
+OpenAPI基于流行的SwaggerUI，用于快速生成项目的API前端展示系统，方便程序开发人员与部分体验成员使用。
+
+
+
+### 自建版体验网址
+
+[南川OAuth2体验网址](oauth2.nanchuan.site)
+
