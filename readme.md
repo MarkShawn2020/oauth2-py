@@ -93,11 +93,11 @@ pip install -r requirements.txt --ignore-installed
 ```bash
 uvicorn main:app --reload --host=localhost --port=8000 
 ```
-![命令行运行启动截图](./assets/run-app-from-cmd.png)
+![命令行运行启动截图](assets/run-app-from-cmd.png)
 
 ### 运行方法二
 直接运行`main.py`
-![直接运行启动截图](./assets/run-app-directly.png)
+![直接运行启动截图](assets/run-app-directly.png)
 
 ### 访问OpenAPI
 运行成功后，点击对应网址（默认：`http://127.0.0.1:8000）`，
@@ -120,11 +120,11 @@ uvicorn main:app --reload --host=localhost --port=8000
 #### 1. 游客注册
 点击`用户注册`，点击`Try it out`，修改输入框中的一些信息，
 然后点击`Executive`。
-![register](assetopenapi-register.png)
+![register](assets/openapi-register.png)
 
 #### 2. 使用用户名与密码进行登录
 点击`用户登录`，其他同上，然后复制获得的`token`。
-![login](assetopenapi-login.png)
+![login](assets/openapi-login.png)
 
 #### 3. 测试使用token进行用户访问
 点击`用户查看`，将`token`复制到`authorization-`中，其他同上。
@@ -132,7 +132,7 @@ uvicorn main:app --reload --host=localhost --port=8000
 （注意，标准的请求头字段应该是`Authorization`，
 这里主要是因为Swagger的一些系统原因，不得不改成一个别名，
 详情参考：https/github.cotiangolfastapissue612）
-![read](assetopenapi-read.png)
+![read](assets/openapi-read.png)
 
 #### 4. 测试使用token进行用户修改
 点击`用户修改`，其他同上。
@@ -141,7 +141,7 @@ uvicorn main:app --reload --host=localhost --port=8000
 
 如果想让这个接口可以使用，重新注册一个账户，
 并且在注册信息`scopes`字段中加入`user:write`。
-![write](assetopenapi-write.png)
+![write](assets/openapi-write.png)
 
 #### 5. 测试使用token进行用户注销
 点击`用户注销`，其他同上。返回结果如下，原因已经解释了。
