@@ -5,6 +5,8 @@
 # @Email        : shawninjuly@gmail.com
 # ------------------------------------
 
+PROJECT_TITLE = '基于FastAPI的快速OAuth2实现'
+
 # user: default
 class DefaultUser:
     username = 'Markshawn'

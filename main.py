@@ -4,12 +4,14 @@
 # @Author       : Mark Shawn
 # @Email        : shawninjuly@gmail.com
 # ------------------------------------
-
+from settings import PROJECT_TITLE
 from fastapi import FastAPI
 from api.root_router import root_rooter
 
+with open('readme.md', 'r', encoding='utf-8') as f:
+    openapi_desc = f.read().split('OpenAPI调试')[-1]
 
-app = FastAPI(title="基于FastAPI的OAuth2实现")
+app = FastAPI(title=PROJECT_TITLE, description=openapi_desc)
 app.include_router(root_rooter, prefix="/api/v1")
 
 
